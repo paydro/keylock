@@ -1,9 +1,59 @@
 Keylock
 -------
 
-Keylock is a javascript library used to map browser keyboard events to javascript functions. Keylock is also geared towards Vi users. The keybindings use the same format the Vi bindings have.
+Keylock is a javascript library used to map browser keyboard events to javascript functions using Vi-like binding and definition scheme.
 
-Here's an example keybinding that alerts the user:
+Installation
+============
 
-    var keys = new Keylock();
-    keys.define
+
+
+Usage
+=====
+
+The short version (with jQuery):
+
+    // Binding keys
+    $("body").keylock({
+      a: function(){ alert("You just pressed the 'a' key!"); },
+      b: function(){ alert("You just pressed the 'b' key!"); },
+      0: function(){ alert("Numbers work too!"); },
+      "*": function(){ alert("Even the asterik!"); },
+      "A": function(){ alert("And capital letters"); },
+    });
+
+    // Bind the char combination CTRL + a
+    $("body").keylock({
+      "C-a": function() { alert('You pressed CTRL+a'); }
+    });
+
+    // Bind the char combination CTRL + ALT + a
+    // NOTE: The "M" must come before the "C". Ordering is important
+    $("body").keylock({
+      "M-C-a": function() { alert('You pressed CTRL+a'); }
+    });
+
+    // Bind the char combination CTRL + ALT + SHIFT + a
+    $("body").keylock({
+      "M-C-A": function() { alert('You pressed CTRL + ALT + A'); }
+    });
+
+    // For mac users - bind COMMAND + a
+    $("body").keylock({
+      "D-a": function() { alert('You pressed COMMAND + a'); }
+    });
+
+There are some caveats to this library, so please see the section below.
+
+Special Keys
+===============
+
+* spacebar: <Space>
+* return/enter: <CR>
+* Esc: <Esc>
+* Up/Down/Left/Right Arrow keys: <A-UP>/<A-DOWN>/<A-LEFT>/<A-RIGHT>
+
+
+Caveats
+=======
+
