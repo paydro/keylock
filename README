@@ -1,0 +1,9 @@
+Keylock
+-------
+
+Keylock is a javascript library used to map browser keyboard events to javascript functions. Keylock is also geared towards Vi users. The keybindings use the same format the Vi bindings have.
+
+Here's an example keybinding that alerts the user:
+
+    var keys = new Keylock();
+    keys.define

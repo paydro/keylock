@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Example uses for KeyLock</title>
+    <script src="../vendor/jquery-1.4.2.min.js"></script>
+    <script src="../lib/keylock.js"></script>
+    <script>
+        $(function(){
+            $("body").keyLock({
+                a: function(e){
+                    var element = $("<p>You pressed 'a'</p>");
+                    $("#output").append(element);
+                },
+
+                // Konami code
+                "<A-UP>": {
+                    "<A-UP>": {
+                        "<A-DOWN>": {
+                            "<A-DOWN>": {
+                                "<A-LEFT>": {
+                                    "<A-RIGHT>": {
+                                        "<A-LEFT>": {
+                                            "<A-RIGHT>": {
+                                                a: {
+                                                    b: function(){
+                                                        $("#output").append($("<p>30 new lives!</p>"));
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div id="output">
+        <p>Press the "a" key and you'll see this div updated.</p>
+    </div>
+
+</body>
+</html>
