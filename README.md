@@ -215,6 +215,7 @@ Contributing
 * Use 80 character columns (yes, 80 - I code on my laptop and I use Vi split
 screens)
 * Write some tests for your functionality. I use [QUnit][2].
+* 4 spaces for tabs.
 * Follow examples used in the code.
 
 
