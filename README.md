@@ -1,24 +1,27 @@
 Keylock
--------
+=======
 
 Keylock is a javascript library used to map browser keyboard events to
 javascript functions using a Vi-esque binding scheme.
 
 
 Installation
-============
+------------
 
-Copy the "keylock.js" into your javascript directory and include the file in
-your html. Done!
+Copy the <code>keylock.js</code> into your javascript directory and include the
+file in your html.
 
-If you're using jQuery, there is also a "jquery.keylock.js" file that is
-helpful.
+Done!
+
+If you're using jQuery, there is also a <code>jquery.keylock.js</code> file
+that is helpful.
 
 Examples
-========
+--------
 
 These examples assume you're using the jQuery plugin. Keylock does not require
-jQuery and it's as simple as binding an event on the "keydown" example.
+jQuery and it's as simple as binding an event on the <code>keydown</code>
+example.
 
 Basic bindings.
 
@@ -74,7 +77,6 @@ sequences.
     $("body").keylock({
         g: {
             i: function() { /* Goto inbox */ },
-
         }
     });
 
@@ -105,15 +107,44 @@ into the Konami code, here's how you would do it with Keylock:
         }
     });
 
+
+Callback function
+-----------------
+
+The function that you can define for a binding takes one argument - the event.
+In the scenario where you need to stop the "keydown" event from bubling up
+(say, hitting enter on a form), you should return false from the function to
+stop the propagation.
+
+    $("body").keylock({
+
+      "<CR>": function(event){
+        console.log(event);
+
+        return false; // Stop the "keydown" event from propagating
+      }
+    });
+
 jQuery Plugin
-=============
+-------------
 
-The jQuery plugin has some extra features for Keylock. With the plugin, you can bind different bindings for different dom elements. For instance, say you needed a binding when the user is focused on an input field (like a search box), and when the user is focused on the whole web page. The plugin makes this easier to do.
+The jQuery plugin has some extra features for Keylock. With the plugin, you can
+bind different bindings for different dom elements. For instance, say you had
+an autocomplete search field that requires the use of the UP/DOWN arrow keys to
+select the item to auto complete with. At the same time, you have a global
+binding for UP/DOWN for other items on the page. The plugin allows you to bind
+directly to the search field and the body tag. This allows both UP/DOWN arrow
+keys to behave differently depending on where they're bound.
 
-    $jquery
+    $("body").define({
+      "<A-UP>": function()
+      "<A-DOWN>": function() ...
+    });
+
+    $("form #search"){ /* ... search bindings ... */ });
 
 Usage without jQuery Plugin
-===========================
+---------------------------
 
 If you don't use jQuery, then here's how you would use it.
 
@@ -127,18 +158,19 @@ First, define your bindings:
         }
     })
 
-Next, create an event handler for the "keydown" event that calls "trigger" on
-the keylock object.
+Next, create an event handler for the <code>keydown</code> event that calls <code>trigger</code> on
+the keylock object. Note, it *must* be the <code>keydown</code> event, and not <code>keypress</code>! [Keydown vs. keypress][1]
 
-    window.bind("keydown", function(event){
-        keylock.trigger(event);
+    var body = document.getElementByTagNames("body")[0];
+    body.addEventListener("keydown", function(event){
+      keylock.trigger(event);
     });
 
 That's it!
 
 
 Special Keys
-============
+------------
 
 Some keys, to simulate Vi-like bindings, have special representations in
 binding definitions.
@@ -150,7 +182,7 @@ binding definitions.
 
 
 Caveat: Modifier Key Ordering
-=============================
+-----------------------------
 
 Ordering of the modifier keys is important when defining bindings. The ordering of the meta keys are:
 
@@ -170,10 +202,21 @@ Some examples to illustrate:
     <C-M-Z> # BAD
 
 What about CTRL + COMMAND?
-==========================
+--------------------------
 You cannot have the combination of CTRL + COMMAND. Browsers trigger both CTRL
 and COMMAND when you press the CTRL key. Sad, I know. When you press COMMAND,
 it only triggers the COMMAND key, so you can combine this with SHIFT and ALT if
 you wish.
 
 
+Contributing
+============
+
+* Use 80 character columns (yes, 80 - I code on my laptop and I use Vi split
+screens)
+* Write some tests for your functionality. I use [QUnit][2].
+* Follow examples used in the code.
+
+
+[1]: http://ejohn.org/blog/keypress-in-safari-31/
+[2]: http://docs.jquery.com/Qunit
