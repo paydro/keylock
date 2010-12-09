@@ -218,5 +218,10 @@ screens)
 * Follow examples used in the code.
 
 
+
+Thanks!
+[Peter Bui][3]
+
 [1]: http://ejohn.org/blog/keypress-in-safari-31/
 [2]: http://docs.jquery.com/Qunit
+[3]: http://paydrotalks.com
