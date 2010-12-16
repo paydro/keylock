@@ -204,10 +204,15 @@ Some examples to illustrate:
 What about CTRL + COMMAND?
 --------------------------
 You cannot have the combination of CTRL + COMMAND. Browsers trigger both CTRL
-and COMMAND when you press the CTRL key. Sad, I know. When you press COMMAND,
-it only triggers the COMMAND key, so you can combine this with SHIFT and ALT if
-you wish.
+and COMMAND when you press the CTRL key. Sad, I know. But, when you press
+COMMAND, it only triggers the COMMAND key. Therefore, you can combine this with
+SHIFT and ALT if you wish.
 
+
+Bugs
+====
+
+Submit bug tickets to the [github repo][4].
 
 Contributing
 ============
@@ -226,3 +231,4 @@ Thanks!
 [1]: http://ejohn.org/blog/keypress-in-safari-31/
 [2]: http://docs.jquery.com/Qunit
 [3]: http://paydrotalks.com
+[4]: https://github.com/paydro/keylock/issues
