@@ -25,7 +25,7 @@ example.
 
 Basic bindings.
 
-    $("body").keylock({
+    $(document).keylock({
       a: function(){ alert("You just pressed the 'a' key!"); },
       b: function(){ alert("You just pressed the 'b' key!"); },
       0: function(){ alert("Numbers work too!"); },
@@ -38,7 +38,7 @@ character. The whole key combination is wrapped in angle brackets. If you're
 familiar with Vi bindings then this is no different.
 
     // Bind the char combination CTRL + a
-    $("body").keylock({
+    $(document).keylock({
       "<C-a>": function() { alert('You pressed CTRL+a'); }
     });
 
@@ -48,7 +48,7 @@ this later.
 
     // Bind the char combination CTRL + ALT + a
     // NOTE: The "M" must come before the "C". Ordering is important
-    $("body").keylock({
+    $(document).keylock({
       "<M-C-a>": function() { alert('You pressed CTRL+a'); }
     });
 
@@ -58,7 +58,7 @@ that results in SHIFT + key. For instance, the example below is using the
 capital letter "A".
 
     // Bind the char combination CTRL + ALT + SHIFT + a
-    $("body").keylock({
+    $(document).keylock({
       "<M-C-A>": function() { alert('You pressed CTRL + ALT + A'); }
     });
 
@@ -66,7 +66,7 @@ Finally, the COMMAND key for Mac users. Again, like Vi, this is represented as
 the capital "D".
 
     // For mac users - bind COMMAND + a
-    $("body").keylock({
+    $(document).keylock({
       "<D-a>": function() { alert('You pressed COMMAND + a'); }
     });
 
@@ -74,7 +74,7 @@ You can also define key sequences just like Vi. GMail and Twitter use similar
 sequences.
 
     // Imitating GMail's goto inbox key sequence ("g" and then "i")
-    $("body").keylock({
+    $(document).keylock({
         g: {
             i: function() { /* Goto inbox */ },
         }
@@ -83,7 +83,7 @@ sequences.
 You can create any length of key sequences you want. For instance, if you're
 into the Konami code, here's how you would do it with Keylock:
 
-    $("body").keylock({
+    $(document).keylock({
         "<A-UP>": {
             "<A-UP>": {
                 "<A-DOWN>": {
@@ -116,7 +116,7 @@ In the scenario where you need to stop the "keydown" event from bubling up
 (say, hitting enter on a form), you should return false from the function to
 stop the propagation.
 
-    $("body").keylock({
+    $(document).keylock({
 
       "<CR>": function(event){
         console.log(event);
@@ -133,10 +133,10 @@ bind different bindings for different dom elements. For instance, say you had
 an autocomplete search field that requires the use of the UP/DOWN arrow keys to
 select the item to auto complete with. At the same time, you have a global
 binding for UP/DOWN for other items on the page. The plugin allows you to bind
-directly to the search field and the body tag. This allows both UP/DOWN arrow
+directly to the search field and the body/document/window elements. This allows both UP/DOWN arrow
 keys to behave differently depending on where they're bound.
 
-    $("body").define({
+    $(document).define({
       "<A-UP>": function()
       "<A-DOWN>": function() ...
     });
