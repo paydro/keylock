@@ -238,7 +238,14 @@ test("undefined keys in a scope resets scope and returns true", function(){
     equals(keylock.trigger( fakeEvent({keyCode: 65}) ), "I'm defined");
 });
 
+test("CTRL + ENTER should work", function(){
+    keylock = new Keylock();
+    keylock.define({
+        "<C-CR>": function() { return "works"; },
+    });
 
+    equals(keylock.trigger( fakeEvent({keyCode:13, ctrlKey:true})), "works");
+});
 
 module("Keylock.Translator");
 
@@ -255,6 +262,10 @@ test("translate uppercase letter", function(){
 
 test("translate enter key", function(){
     equals( t(fakeEvent({keyCode: 13})), "<CR>");
+});
+
+test("translate enter key with CTRL", function(){
+    equals( t(fakeEvent({keyCode: 13, ctrlKey: true})), "<C-CR>");
 });
 
 test("translate escape key", function(){
