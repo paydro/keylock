@@ -175,10 +175,10 @@ Special Keys
 Some keys, to simulate Vi-like bindings, have special representations in
 binding definitions.
 
-* spacebar: <code><Space></code>
-* return/enter: <code><CR></code>
-* Esc: <code><Esc></code>
-* Up/Down/Left/Right Arrow keys: <code><A-UP>/<A-DOWN>/<A-LEFT>/<A-RIGHT></code>
+* spacebar: <code>&lt;Space&gt;</code>
+* return/enter: <code>&lt;CR&gt;</code>
+* Esc: <code>&lt;Esc&gt;</code>
+* Up/Down/Left/Right Arrow keys: <code>&lt;A-UP&gt;/&lt;A-DOWN&gt;/&lt;A-LEFT&gt;/&lt;A-RIGHT&gt;</code>
 
 
 Caveat: Modifier Key Ordering
